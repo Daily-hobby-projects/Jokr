@@ -1,5 +1,5 @@
 from ..utils.database import db
-from marshmallow_sqlalchemy import ModelSchema
+from marshmallow_sqlalchemy import SQLAlchemySchema,auto_field
 from marshmallow import fields
 
 class Joke(db.Model):
@@ -24,11 +24,12 @@ class Joke(db.Model):
         db.session.commit()
 
 
-class JokeSchema(ModelSchema):
-    class Meta(ModelSchema.Meta):
+class JokeSchema(SQLAlchemySchema):
+    class Meta:
         model=Joke
-        sqla_session=db.session
+        load_instance=True
 
-    id=fields.Integer()
-    name=fields.String()
-    content=fields.String()
+
+    id=auto_field()
+    name=auto_field()
+    content=auto_field()

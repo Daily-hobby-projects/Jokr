@@ -1,5 +1,5 @@
 from flask import Flask,request,redirect,jsonify,make_response,Blueprint
-from ..models.jokes import Joke ,JokeSchema
+from ..models.jokes import Joke , JokeSchema
 
 api_bp=Blueprint('api',__name__)
 
@@ -13,13 +13,27 @@ def create_joke():
 
     new_joke.save()
 
-    joke=JokeSchema().dump(new_joke)
+    joke_schema=JokeSchema()
+    joke=joke_schema.dump(new_joke)
+
 
     return make_response(jsonify(
         {"message":"Joke added",
         "success":True,
-        "joke":joke
+        "joke":{
+            "name":data['name'],
+            "content":data["content"]
+        }
     }
     ),201)
 
 
+@api_bp.route('/delete/<joke>',methods=['DELETE'])
+def delete_joke(joke):
+
+    joke_to_delete=Joke.query.filter_by(content=joke).first()
+
+    joke_to_delete.delete()
+
+
+    return redirect(url_for('api.index'))

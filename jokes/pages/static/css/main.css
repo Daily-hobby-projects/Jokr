@@ -6,6 +6,11 @@ h1{
 }
 .mybtn{
     padding: 20px;
+    width: 100%;
+    color: white;
+    background-color: dodgerblue;
+    font-weight: bold;
+    border: none;
 }
 .form{
     width: 40%;
@@ -13,4 +18,19 @@ h1{
 }
 .form-control{
     width: 100%;
+}
+.posts{
+    text-align: center;
+}
+.loading{
+    display: none;
+    text-align: center;
+}
+.joke{
+    border-radius: 7px;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid lightslategray;
+    margin: auto;
+    width: 20%;
 }
