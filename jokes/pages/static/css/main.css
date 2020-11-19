@@ -1,0 +1,16 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+}
+h1{
+    text-align: center;
+}
+.mybtn{
+    padding: 20px;
+}
+.form{
+    width: 40%;
+    margin: auto;
+}
+.form-control{
+    width: 100%;
+}
